@@ -1,1 +1,39 @@
-/* No CSS */
+body {
+  background-color: #272944;
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+#container #top {
+  display: flex;
+  align-self: center;
+  justify-content: space-between;
+  width: 800px;
+  height: 100px;
+  color: #e0e0e0;
+  font-size: 30px;
+}
+#container #top h4 {
+  width: 140px;
+}
+#container #points {
+  display: flex;
+  align-self: center;
+  justify-content: space-between;
+  width: 800px;
+  height: 50px;
+  color: #e0e0e0;
+  font-size: 30px;
+}
+#container #points h4 {
+  margin-top: 0px;
+}
+#container #points :first-child {
+  margin-left: 35px;
+}
+#container #points :last-child {
+  margin-right: 70px;
+}

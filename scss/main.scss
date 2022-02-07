@@ -1,0 +1,48 @@
+@use 'variables' as *;
+
+body {
+    background-color: $background-color;
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    #top {
+        display: flex;
+        align-self: center;
+        justify-content: space-between;
+        width: $top-width;
+        height: $top-height;
+
+        color: $primary-color;
+        font-size: $primary-font-size;
+
+        h4 {
+            width: 140px;
+        }
+    }
+
+    #points {
+        display: flex;
+        align-self: center;
+        justify-content: space-between;
+        width: $top-width;
+        height: $points-height;
+
+        color: $primary-color;
+        font-size: $primary-font-size;
+        
+        h4 {            
+            margin-top: 0px;
+        }
+
+        :first-child {
+            margin-left: 35px;
+        }
+        :last-child {
+            margin-right: 70px;
+        }
+    }
+}
