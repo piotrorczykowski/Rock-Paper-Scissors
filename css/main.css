@@ -45,6 +45,7 @@ body {
   width: 1200px;
   height: 350px;
   margin-top: 87.5px;
+  display: none;
 }
 #container #info h2 {
   text-align: center;
