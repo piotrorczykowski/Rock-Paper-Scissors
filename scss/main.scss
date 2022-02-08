@@ -3,12 +3,11 @@
 @mixin flex-basic {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    align-self: center;
 }
 
 @mixin flex-alt {
     flex-direction: row;
-    align-self: center;
     justify-content: space-between;
 }
 
@@ -27,7 +26,7 @@ body {
     #top {
         @include flex-basic;
         @include flex-alt;
-        width: $top-width;
+        width: $basic-width;
         height: $top-height;
 
         h4 {
@@ -39,13 +38,48 @@ body {
     #points {
         @include flex-basic;
         @include flex-alt;
-        width: $top-width;
+        width: $basic-width;
         height: $points-height;
         
         h4 {            
             margin-top: 0px;
             text-align: center;
             width: $points-and-label-width;
+        }
+    }
+
+    #info {
+        @include flex-basic;
+        justify-content: space-between;
+        width: $basic-width;
+        height: $info-height;
+        margin-top: $info-height/4;
+
+        h2 {
+            text-align: center;
+        }
+
+        #start {
+            background-color: $button-color;
+            color: $primary-color;
+            font-weight: bold;
+
+            align-self: center;
+            width: $button-width;
+            height: $button-height;
+
+            border: none;
+            border-radius: 10px;
+
+            &:hover {
+                cursor: pointer;
+                filter: brightness(95%);
+            }
+
+            &:active {
+                filter: brightness(100%);
+                transform: scale(0.98);
+            }
         }
     }
 }
