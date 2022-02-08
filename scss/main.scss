@@ -1,48 +1,51 @@
 @use 'variables' as *;
 
+@mixin flex-basic {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+@mixin flex-alt {
+    flex-direction: row;
+    align-self: center;
+    justify-content: space-between;
+}
+
+
+
 body {
     background-color: $background-color;
 }
 
 #container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    @include flex-basic;
+    color: $primary-color;
+    font-size: $primary-font-size;
+    font-family: $font-name;
 
     #top {
-        display: flex;
-        align-self: center;
-        justify-content: space-between;
+        @include flex-basic;
+        @include flex-alt;
         width: $top-width;
         height: $top-height;
 
-        color: $primary-color;
-        font-size: $primary-font-size;
-
         h4 {
-            width: 140px;
+            text-align: center;
+            width: $points-and-label-width;
         }
     }
 
     #points {
-        display: flex;
-        align-self: center;
-        justify-content: space-between;
+        @include flex-basic;
+        @include flex-alt;
         width: $top-width;
         height: $points-height;
-
-        color: $primary-color;
-        font-size: $primary-font-size;
         
         h4 {            
             margin-top: 0px;
-        }
-
-        :first-child {
-            margin-left: 35px;
-        }
-        :last-child {
-            margin-right: 70px;
+            text-align: center;
+            width: $points-and-label-width;
         }
     }
 }
