@@ -15,13 +15,13 @@
 
 body {
     background-color: $background-color;
+    color: $primary-color;
+    font-size: $primary-font-size;
+    font-family: $font-name;
 }
 
 #container {
     @include flex-basic;
-    color: $primary-color;
-    font-size: $primary-font-size;
-    font-family: $font-name;
 
     #top {
         @include flex-basic;
@@ -48,41 +48,40 @@ body {
         }
     }
 
+    button {
+        background-color: $button-color;
+        color: $primary-color;
+        font-weight: bold;
+
+        width: $button-width;
+        height: $button-height;
+
+        border: none;
+        border-radius: 10px;
+
+        transition: all 0.3s linear;
+
+        &:hover {
+            cursor: pointer;
+            filter: brightness(95%);
+        }
+    
+        &:active {
+            filter: brightness(100%);
+            transform: scale(0.98);
+        }
+    }
+
     #info {
         @include flex-basic;
         justify-content: space-between;
         width: $basic-width;
         height: $info-height;
-        margin-top: $info-height/4;
 
         h2 {
             text-align: center;
         }
 
-        #start {
-            background-color: $button-color;
-            color: $primary-color;
-            font-weight: bold;
-
-            align-self: center;
-            width: $button-width;
-            height: $button-height;
-
-            border: none;
-            border-radius: 10px;
-
-            transition: all 0.3s linear;
-
-            &:hover {
-                cursor: pointer;
-                filter: brightness(95%);
-            }
-
-            &:active {
-                filter: brightness(100%);
-                transform: scale(0.98);
-            }
-        }
         display: none;
     }
 
@@ -109,35 +108,15 @@ body {
         @include flex-basic;
         @include flex-alt;
 
-        width: ($basic-width)-152px;
-
-        padding-left: 152px;
-        padding-right: 152px;
-
+        width: $basic-width;
         margin-top: 4em;
-        
-        button {
-            background-color: $button-color;
-            color: $primary-color;
-            font-weight: bold;
 
-            width: $button-width;
-            height: $button-height;
+        :first-child {
+            margin-left: $margin-of-buttons;
+        }
 
-            border: none;
-            border-radius: 10px;
-
-            transition: all 0.3s linear;
-
-            &:hover {
-                cursor: pointer;
-                filter: brightness(95%);
-            }
-
-            &:active {
-                filter: brightness(100%);
-                transform: scale(0.98);
-            }
+        :last-child {
+            margin-right: $margin-of-buttons;
         }
     }
 }
