@@ -82,7 +82,11 @@ body {
             text-align: center;
         }
 
-        display: none;
+        #start {
+            align-self: center;
+        }
+
+        //display: none;
     }
 
     #main {
@@ -102,6 +106,7 @@ body {
         #left {
             transform: scaleX(-1);
         }
+        display: none;
     }
 
     #bottom {
@@ -118,5 +123,6 @@ body {
         :last-child {
             margin-right: $margin-of-buttons;
         }
+        display: none;
     }
 }

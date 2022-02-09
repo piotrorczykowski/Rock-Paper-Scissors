@@ -62,10 +62,12 @@ body {
   justify-content: space-between;
   width: 1200px;
   height: 350px;
-  display: none;
 }
 #container #info h2 {
   text-align: center;
+}
+#container #info #start {
+  align-self: center;
 }
 #container #main {
   display: flex;
@@ -76,6 +78,7 @@ body {
   justify-content: space-between;
   width: 1200px;
   margin-top: 2em;
+  display: none;
 }
 #container #main h2 {
   width: 1200px;
@@ -92,6 +95,7 @@ body {
   justify-content: space-between;
   width: 1200px;
   margin-top: 4em;
+  display: none;
 }
 #container #bottom :first-child {
   margin-left: 76px;
