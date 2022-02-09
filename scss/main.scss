@@ -71,6 +71,8 @@ body {
             border: none;
             border-radius: 10px;
 
+            transition: all 0.3s linear;
+
             &:hover {
                 cursor: pointer;
                 filter: brightness(95%);
@@ -82,5 +84,60 @@ body {
             }
         }
         display: none;
+    }
+
+    #main {
+        @include flex-basic;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        width: $basic-width;
+        margin-top: 2em;
+
+        h2 {
+            width: $basic-width;
+            text-align: center;
+        }
+
+        #left {
+            transform: scaleX(-1);
+        }
+    }
+
+    #bottom {
+        @include flex-basic;
+        @include flex-alt;
+
+        width: ($basic-width)-152px;
+
+        padding-left: 152px;
+        padding-right: 152px;
+
+        margin-top: 4em;
+        
+        button {
+            background-color: $button-color;
+            color: $primary-color;
+            font-weight: bold;
+
+            width: $button-width;
+            height: $button-height;
+
+            border: none;
+            border-radius: 10px;
+
+            transition: all 0.3s linear;
+
+            &:hover {
+                cursor: pointer;
+                filter: brightness(95%);
+            }
+
+            &:active {
+                filter: brightness(100%);
+                transform: scale(0.98);
+            }
+        }
     }
 }
