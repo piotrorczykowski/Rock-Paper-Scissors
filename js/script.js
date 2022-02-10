@@ -1,4 +1,7 @@
 const game = () => {
+    let playerPoints = 0
+    let computerPoints = 0
+
     const option = Object.freeze({
         Rock: 1,
         Paper: 2,
@@ -59,6 +62,15 @@ const game = () => {
         leftIcon.attr('src', rock)
         rightIcon.attr('src', rock)
     }
+
+    //Update points
+    const updatePoints = () => {
+        const player = $('#player')
+        const computer = $('#computer')
+
+        player.text(playerPoints)
+        computer.text(computerPoints)
+    }
  
     //Draw computer choice and check who won
     const randomNumber = () => {
@@ -66,23 +78,30 @@ const game = () => {
     }
 
     const checkWhoWin = (playerChoice) => {
+        const textLine =  $('#info-text')
         const computerChoice = randomNumber()
 
         updateIcons(playerChoice, computerChoice)
 
         if(playerChoice === computerChoice) {
-            console.log('Tie')
+            textLine.text('Tie')
+            playerPoints++
+            computerPoints++
         }
         else if(
             (playerChoice === option.Rock && computerChoice === option.Scissors) || 
             (playerChoice === option.Paper && computerChoice === option.Rock) || 
             (playerChoice === option.Scissors && computerChoice === option.Paper)
         ) {
-            console.log('Player won')
+            textLine.text('Player won')
+            playerPoints++
         }
         else {
-            console.log('Computer won')
+            textLine.text('Computer won')
+            computerPoints++
         }
+
+        updatePoints()
     }
 
     //Play animation
@@ -103,13 +122,14 @@ const game = () => {
         });
     }
 
+    //Function to handle button click event
     const buttonClickHandler = (playerChoice) => {
         resetIcons()
 
         setTimeout(() => {
             checkWhoWin(playerChoice)
         }, 1500)
-        
+
         playAnimation()
     }
 
