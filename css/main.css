@@ -121,7 +121,6 @@ body {
   flex-wrap: wrap;
   justify-content: space-between;
   width: 1200px;
-  margin-top: 2em;
   display: none;
 }
 #container #main h2 {

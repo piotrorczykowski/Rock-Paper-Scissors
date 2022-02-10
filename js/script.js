@@ -14,8 +14,12 @@ const game = () => {
     //Display game
     const startGame = () => {        
         $('#start').on('click', function() {
+            $('#info').fadeTo('slow')
             $('#info').css('display', 'none')
+
+            $('#main').fadeIn( "slow" )
             $('#main').css('display', 'flex')
+            $('#bottom').fadeIn( "slow" )
             $('#bottom').css('display', 'flex')
         })
     }
