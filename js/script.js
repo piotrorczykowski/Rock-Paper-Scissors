@@ -37,18 +37,50 @@ const game = () => {
         }
     }
 
+    //Play animation
+    const playAnimation = () => {
+        const leftIcon = $('#left')[0];
+        const rightIcon = $('#right')[0];
+        
+        leftIcon.style.animation = "shake-left 0.5s 3";
+        rightIcon.style.animation = "shake-right 0.5s 3";
+    }
+
+    //Function to restart animation
+    const restartAnimation = () =>
+    {
+        $('#left').on("animationend", function() {
+            this.style.animation = "";
+        });
+
+        $('#right').on("animationend", function() {
+            this.style.animation = "";
+        });
+    }
+
     //Set up everything
-    const setUpGame = () => {
+    const setUpGame = () => {     
+        restartAnimation()
+        
         $('#rock').on('click', function() {
-            checkWhoWin(option.Rock)
+            setTimeout(() => {
+                checkWhoWin(option.Rock)
+            }, 3000);
+            playAnimation()
         })
         
         $('#paper').on('click', function() {
-            checkWhoWin(option.Paper)
+            setTimeout(() => {
+                checkWhoWin(option.Paper)
+            }, 3000);
+            playAnimation()
         })
         
         $('#scissors').on('click', function() {
-            checkWhoWin(option.Scissors)
+            setTimeout(() => {
+                checkWhoWin(option.Scissors)
+            }, 3000);
+            playAnimation()
         })
     }
 
@@ -57,4 +89,5 @@ const game = () => {
     setUpGame()
 }
 
+//This function starts the game
 game()

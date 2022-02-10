@@ -11,6 +11,22 @@
     justify-content: space-between;
 }
 
+//      Animation       //
+
+@keyframes shake-left {
+    0% { transform: translate(0px, 0px) scaleX(-1); }
+    50% { transform: translate(0px, 100px) scaleX(-1); }
+    100% { transform: translate(0px, 0px ) scaleX(-1); }
+}
+
+@keyframes shake-right {
+    0% {  transform: translate(0px, 0px) }
+    50% { transform: translate(0px, 100px) }
+    100% { transform: translate(0px, 0px ) }
+}
+
+
+//      end       //
 
 
 body {
@@ -85,8 +101,6 @@ body {
         #start {
             align-self: center;
         }
-
-        //display: none;
     }
 
     #main {
