@@ -5,6 +5,9 @@ const game = () => {
         Scissors: 3
     })
 
+    const leftIcon = $('#left')[0]
+    const rightIcon = $('#right')[0]
+
     //Display game
     const startGame = () => {        
         $('#start').on('click', function() {
@@ -39,22 +42,19 @@ const game = () => {
 
     //Play animation
     const playAnimation = () => {
-        const leftIcon = $('#left')[0];
-        const rightIcon = $('#right')[0];
-        
-        leftIcon.style.animation = "shake-left 0.5s 3";
-        rightIcon.style.animation = "shake-right 0.5s 3";
+        leftIcon.style.animation = "shake-left 0.5s 3"
+        rightIcon.style.animation = "shake-right 0.5s 3"
     }
 
     //Function to restart animation
     const restartAnimation = () =>
     {
         $('#left').on("animationend", function() {
-            this.style.animation = "";
+            leftIcon.style.animation = "";
         });
 
         $('#right').on("animationend", function() {
-            this.style.animation = "";
+            rightIcon.style.animation = "";
         });
     }
 
@@ -65,21 +65,21 @@ const game = () => {
         $('#rock').on('click', function() {
             setTimeout(() => {
                 checkWhoWin(option.Rock)
-            }, 3000);
+            }, 1500);
             playAnimation()
         })
         
         $('#paper').on('click', function() {
             setTimeout(() => {
                 checkWhoWin(option.Paper)
-            }, 3000);
+            }, 1500);
             playAnimation()
         })
         
         $('#scissors').on('click', function() {
             setTimeout(() => {
                 checkWhoWin(option.Scissors)
-            }, 3000);
+            }, 1500);
             playAnimation()
         })
     }
