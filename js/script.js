@@ -1,29 +1,33 @@
 const game = () => {
     let playerPoints = 0
     let computerPoints = 0
-
+    
+    let roundCounter = 0
+    
     const option = Object.freeze({
         Rock: 1,
         Paper: 2,
         Scissors: 3
     })
 
+    const textLine =  $('#info-text')
+    
     const leftIcon = $('#left')
     const rightIcon = $('#right')
 
     const rockButton = $('#rock')
     const paperButton = $('#paper')
     const scissorsButton = $('#scissors')
-    
+
     //Display game
     const startGame = () => {        
         $('#start').on('click', function() {
             $('#info').fadeTo('slow')
-            $('#info').css('display', 'none')
+            $('#info').css('display', 'none')            
 
-            $('#main').fadeIn( "slow" )
+            $('#main').fadeIn('slow')
             $('#main').css('display', 'flex')
-            $('#bottom').fadeIn( "slow" )
+            $('#bottom').fadeIn( 'slow')
             $('#bottom').css('display', 'flex')
         })
     }
@@ -79,6 +83,49 @@ const game = () => {
         player.text(playerPoints)
         computer.text(computerPoints)
     }
+
+    //Update ending message
+    const updateMessage = () => {
+
+        if(playerPoints === computerPoints)
+        {
+            textLine.text('Tie!')
+        }
+        else if(playerPoints > computerPoints)
+        {
+            textLine.text('You won!')
+        }
+        else
+        {
+            textLine.text('You lost!')
+        }
+        
+    }
+    
+    //Turn off buttons
+    const disableButtons = () => {
+        rockButton[0].style.pointerEvents = 'none'
+        paperButton[0].style.pointerEvents = 'none'
+        scissorsButton[0].style.pointerEvents = 'none'
+    }
+    
+    //Turn on buttons
+    const enableButtons = () => {
+        rockButton[0].style.pointerEvents = 'auto'
+        paperButton[0].style.pointerEvents = 'auto'
+        scissorsButton[0].style.pointerEvents = 'auto'    
+    }
+
+    //Check if the game is over
+    const checkEndGame = () => {
+        if(roundCounter === 3) {
+            disableButtons()
+            setTimeout(() => {
+                location.reload()
+            },1500)
+            updateMessage()
+        }
+    }
  
     //Draw computer choice and check who won
     const randomNumber = () => {
@@ -86,10 +133,11 @@ const game = () => {
     }
 
     const checkWhoWon = (playerChoice) => {
-        const textLine =  $('#info-text')
         const computerChoice = randomNumber()
 
         updateIcons(playerChoice, computerChoice)
+
+        roundCounter++
 
         if(playerChoice === computerChoice) {
             textLine.text('Tie')
@@ -130,19 +178,6 @@ const game = () => {
         });
     }
 
-    //Turn off buttons
-    const disableButtons = () => {
-        rockButton[0].style.pointerEvents = 'none'
-        paperButton[0].style.pointerEvents = 'none'
-        scissorsButton[0].style.pointerEvents = 'none'
-    }
-    
-    //Turn on buttons
-    const enableButtons = () => {
-        rockButton[0].style.pointerEvents = 'auto'
-        paperButton[0].style.pointerEvents = 'auto'
-        scissorsButton[0].style.pointerEvents = 'auto'    
-    }
  
     //Function to handle button click event
     const buttonClickHandler = (playerChoice) => {
@@ -152,6 +187,7 @@ const game = () => {
         setTimeout(() => {
             checkWhoWon(playerChoice)
             enableButtons()
+            checkEndGame()
         }, 1500)
 
         playAnimation()
@@ -162,7 +198,6 @@ const game = () => {
         restartAnimation()
         
         rockButton.on('click', function() {
-            //this.style.pointerEvents = 'none';
             buttonClickHandler(option.Rock)
         })
         
