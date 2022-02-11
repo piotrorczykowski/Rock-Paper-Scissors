@@ -11,6 +11,10 @@ const game = () => {
     const leftIcon = $('#left')
     const rightIcon = $('#right')
 
+    const rockButton = $('#rock')
+    const paperButton = $('#paper')
+    const scissorsButton = $('#scissors')
+    
     //Display game
     const startGame = () => {        
         $('#start').on('click', function() {
@@ -26,45 +30,45 @@ const game = () => {
  
     //Display choosen icons
     const updateIcons = (playerChoice, computerChoice) => {
-        const rock = 'assets/rock.png'
-        const paper = 'assets/paper.png'
-        const scissors = 'assets/scissors.png'
+        const rockFile = 'assets/rock.png'
+        const paperFile = 'assets/paper.png'
+        const scissorsFile = 'assets/scissors.png'
 
         //Player icon
         if(playerChoice === option.Rock)
         {
-            leftIcon.attr('src', rock)
+            leftIcon.attr('src', rockFile)
         }
         else if(playerChoice === option.Paper)
         {
-            leftIcon.attr('src', paper)
+            leftIcon.attr('src', paperFile)
         }
         else
         {
-            leftIcon.attr('src', scissors)
+            leftIcon.attr('src', scissorsFile)
         }
         
         //Computer icon
         if(computerChoice === option.Rock)
         {
-            rightIcon.attr('src', rock)
+            rightIcon.attr('src', rockFile)
         }
         else if(computerChoice === option.Paper)
         {
-            rightIcon.attr('src', paper)
+            rightIcon.attr('src', paperFile)
         }
         else
         {
-            rightIcon.attr('src', scissors)
+            rightIcon.attr('src', scissorsFile)
         }
     }
 
     //Set default icons
     const resetIcons = () => {
-        const rock = 'assets/rock.png'
+        const rockFile = 'assets/rock.png'
 
-        leftIcon.attr('src', rock)
-        rightIcon.attr('src', rock)
+        leftIcon.attr('src', rockFile)
+        rightIcon.attr('src', rockFile)
     }
 
     //Update points
@@ -81,7 +85,7 @@ const game = () => {
         return Math.floor(Math.random() * 3) + 1;
     }
 
-    const checkWhoWin = (playerChoice) => {
+    const checkWhoWon = (playerChoice) => {
         const textLine =  $('#info-text')
         const computerChoice = randomNumber()
 
@@ -117,21 +121,37 @@ const game = () => {
     //Function to restart animation
     const restartAnimation = () =>
     {
-        $('#left').on("animationend", function() {
+        leftIcon.on("animationend", function() {
             leftIcon[0].style.animation = '';
         });
 
-        $('#right').on("animationend", function() {
+        rightIcon.on("animationend", function() {
             rightIcon[0].style.animation = '';
         });
     }
 
+    //Turn off buttons
+    const disableButtons = () => {
+        rockButton[0].style.pointerEvents = 'none'
+        paperButton[0].style.pointerEvents = 'none'
+        scissorsButton[0].style.pointerEvents = 'none'
+    }
+    
+    //Turn on buttons
+    const enableButtons = () => {
+        rockButton[0].style.pointerEvents = 'auto'
+        paperButton[0].style.pointerEvents = 'auto'
+        scissorsButton[0].style.pointerEvents = 'auto'    
+    }
+ 
     //Function to handle button click event
     const buttonClickHandler = (playerChoice) => {
         resetIcons()
+        disableButtons()
 
         setTimeout(() => {
-            checkWhoWin(playerChoice)
+            checkWhoWon(playerChoice)
+            enableButtons()
         }, 1500)
 
         playAnimation()
@@ -141,15 +161,16 @@ const game = () => {
     const setUpGame = () => {     
         restartAnimation()
         
-        $('#rock').on('click', function() {
+        rockButton.on('click', function() {
+            //this.style.pointerEvents = 'none';
             buttonClickHandler(option.Rock)
         })
         
-        $('#paper').on('click', function() {
+        paperButton.on('click', function() {
             buttonClickHandler(option.Paper)
         })
         
-        $('#scissors').on('click', function() {
+        scissorsButton.on('click', function() {
             buttonClickHandler(option.Scissors)
         })
     }
