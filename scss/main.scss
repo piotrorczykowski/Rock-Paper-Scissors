@@ -42,7 +42,6 @@ body {
         @include flex-basic;
         @include flex-alt;
         width: $basic-width;
-        height: $top-height;
 
         h4 {
             text-align: center;
@@ -54,7 +53,6 @@ body {
         @include flex-basic;
         @include flex-alt;
         width: $basic-width;
-        height: $points-height;
         
         h4 {            
             margin-top: 0px;
@@ -91,10 +89,10 @@ body {
         @include flex-basic;
         justify-content: space-between;
         width: $basic-width;
-        height: $info-height;
 
         h2 {
             text-align: center;
+            margin-bottom: 4em;
         }
 
         #start {
@@ -111,8 +109,10 @@ body {
         width: $basic-width;
         
         h2 {
-            width: $basic-width;
+            width: 100%;
             text-align: center;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         #left {
