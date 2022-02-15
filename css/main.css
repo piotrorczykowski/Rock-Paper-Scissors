@@ -82,9 +82,10 @@ body {
 #container button {
   background-color: #2d7560;
   color: #e0e0e0;
+  font-size: 0.8em;
   font-weight: bold;
   width: 150px;
-  height: 50px;
+  height: 75px;
   border: none;
   border-radius: 10px;
   transition: all 0.3s linear;
@@ -145,4 +146,73 @@ body {
 }
 #container #bottom :last-child {
   margin-right: 76px;
+}
+
+@media (min-width: 0px) and (max-width: 480px) {
+  body {
+    font-size: 1.4em;
+  }
+
+  #container {
+    width: 100%;
+  }
+  #container #main {
+    width: 100%;
+  }
+  #container #main #left {
+    width: 50%;
+  }
+  #container #main #right {
+    width: 50%;
+  }
+  #container button {
+    width: 90%;
+    height: 50px;
+    font-size: 1em;
+  }
+  #container #bottom {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    width: 100%;
+    margin-top: max(20%, 30%);
+    display: none;
+  }
+  #container #bottom #rock, #container #bottom #paper, #container #bottom #scissors {
+    margin: auto;
+    margin-bottom: 2em;
+  }
+}
+@media (min-width: 480px) and (max-width: 960px) {
+  body {
+    scroll: no;
+    overflow: hidden;
+  }
+
+  #container {
+    width: 100%;
+    height: auto;
+  }
+  #container #main {
+    width: 100%;
+  }
+  #container #main #left {
+    width: 33.3333333333%;
+  }
+  #container #main #right {
+    width: 33.3333333333%;
+  }
+  #container button {
+    width: 25%;
+    height: 100px;
+    font-size: 0.8em;
+  }
+  #container #bottom {
+    width: 100%;
+    margin: auto;
+    margin-top: max(10%, 20%);
+  }
+  #container #bottom #rock, #container #bottom #paper, #container #bottom #scissors {
+    margin: auto;
+  }
 }
