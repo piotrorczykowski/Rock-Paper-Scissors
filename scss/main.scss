@@ -35,27 +35,27 @@ body {
     color: $primary-color;
     font-size: $primary-font-size;
     font-family: $font-name;
+    scroll-behavior: no;
+    overflow: hidden;
 }
 
 #container {
     @include flex-basic;
 
-    #top {
+    #top, #points {
         @include flex-basic;
         @include flex-alt;
         width: $basic-width;
+    }
 
+    #top {
         h4 {
             text-align: center;
             width: $points-and-label-width;
         }
     }
 
-    #points {
-        @include flex-basic;
-        @include flex-alt;
-        width: $basic-width;
-        
+    #points {        
         h4 {            
             margin-top: 0px;
             text-align: center;
@@ -145,7 +145,6 @@ body {
 //      Phone       //
 
 @include phone {
-    
     body {
         font-size: $phone-font-size;
     }
@@ -156,10 +155,8 @@ body {
     
         #main {
             width: $phone-width;
-            #left {
-                width: $phone-width/2;
-            }
-            #right {
+
+            #left, #right {
                 width: $phone-width/2;
             }
         }
@@ -177,12 +174,10 @@ body {
     
             margin-top: max(20%,30%);
     
-    
             #rock, #paper, #scissors{
                 margin: auto;
                 margin-bottom: 2em;
             }
-
             display: none;
         }
     }
@@ -195,22 +190,13 @@ body {
 //      Tablet      //
 
 @include tablet {
-    body {
-        scroll: no;
-        overflow: hidden;
-    }
-
     #container {
         width: $tablet-width;
-        height: auto;
         
         #main {
             width: $tablet-width;
 
-            #left {
-                width: $phone-width/3;
-            }
-            #right {
+            #left, #right {
                 width: $phone-width/3;
             }
         }
@@ -226,7 +212,6 @@ body {
             width: $tablet-width;
             margin: auto;
             margin-top: max(10%, 20%);
-            
             
             #rock, #paper, #scissors{
                 margin: auto;
